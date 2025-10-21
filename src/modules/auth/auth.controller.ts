@@ -82,8 +82,8 @@ export const logoutUser = async (req: Request, res: Response) => {
     //  Clear the token cookie
     res.clearCookie("token", {
       httpOnly: true,
-      secure: false, // use `true` in production (HTTPS)
-      sameSite: "lax",
+      secure: true, // use `true` in production (HTTPS)
+      sameSite: "none",
     });
 
     return res.status(200).json({
