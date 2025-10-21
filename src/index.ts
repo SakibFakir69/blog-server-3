@@ -27,8 +27,8 @@ app.use(express.json());
 
 
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/project", projectRouter);
-app.use("/api/v1/blog", blogRouter);
+// app.use("/api/v1/project", projectRouter);
+// app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/auth", authRouter);
 
 
