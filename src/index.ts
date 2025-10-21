@@ -6,8 +6,9 @@ import cookieParser from "cookie-parser";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { userRouter } from './modules/users/user.route';
+import { authRouter } from './modules/auth/auth.route';
 
-import "types/express";
+// import "types/express";
 
 
 
@@ -31,6 +32,7 @@ app.use(express.json());
 
 
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.get("/", (req:Request, res:Response) => {
   res.json({ message: "✅ Backend is running successfully!" });
