@@ -1,27 +1,41 @@
-
-
-import dotenv from 'dotenv'
-dotenv.config
-import express, { Request, Response } from "express";
+import express,{Request,Response} from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
+import { userRouter } from "./modules/users/user.route";
+// import { projectRouter } from "./modules/project/project.route";
+// import { blogRouter } from "./modules/blog/blog.route";
 
-
-
+import { authRouter } from "./modules/auth/auth.route";
+import "types/express";
 
 const app = express();
 
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://blog-qvx3b2ykl-sakibfakirs-projects.vercel.app","https://blog-5ad23efxt-sakibfakirs-projects.vercel.app",'https://blog-ui-rosy.vercel.app' ] ,// frontend URL
+
+     credentials: true, // allow cookies
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // allow all HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // allow headers
+  })
+);
+app.use(cookieParser()); // 
 app.use(express.json());
 
 
-console.log("start")
+
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/project", projectRouter);
+app.use("/api/v1/blog", blogRouter);
+app.use("/api/v1/auth", authRouter);
+
+
 app.get("/", (req:Request, res:Response) => {
-  res.json({ message: "✅ Backend is running successfully!" });
+  res.send("Hello World!");
 });
 
 
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+export const ServerApp = app;
