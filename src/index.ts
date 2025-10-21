@@ -39,6 +39,4 @@ app.get("/", (req:Request, res:Response) => {
   res.send("Hello World!");
 });
 
-app.listen(process.env.PORT,()=>{
-  console.log(`server running ont ${process.env.PORT}`)
-})
+
