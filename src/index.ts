@@ -35,6 +35,7 @@ app.use(cookieParser()); //
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/project", projectRouter);
+app.use('/api/v1/blog')
 
 app.get("/", (req:Request, res:Response) => {
   res.json({ message: "✅ Backend is running successfully!" });
