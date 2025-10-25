@@ -1,4 +1,4 @@
-# Server3 API
+
 
 A production-ready **TypeScript Express.js** backend server with **Prisma ORM**, **JWT authentication**, and **PostgreSQL** support. Built for scalability with Vercel deployment support.
 
